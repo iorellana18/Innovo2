@@ -12,6 +12,12 @@ import android.widget.ListView;
 import com.example.ian.innovo2.R;
 import com.example.ian.innovo2.model.Objeto;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -56,6 +62,35 @@ public class AllFragment extends Fragment {
         Objeto objeto = new Objeto("comuna","nombre","direccion","telefono","categoria");
         objetos.add(objeto);
 
+        try {int j;
+            JSONArray json = new JSONArray(readJSONFromAsset());
+            for(j=0;j<json.length();j++){
+                JSONObject object = json.getJSONObject(j);
+                Objeto objeto2 = new Objeto(object.getString("comuna"),object.getString("nombre"),
+                        object.getString("direccion"),object.getString("telefono"),object.getString("categoria"));
+                objetos.add(objeto2);
+            }
+        }catch (JSONException j){
+            System.out.print(j);
+        }
+
+
         return objetos;
+    }
+
+    public String readJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getActivity().getResources().openRawResource(R.raw.all);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }
