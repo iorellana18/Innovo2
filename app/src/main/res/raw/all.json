@@ -4,7 +4,7 @@
     "nombre": "SAPU-Luis Chavarría",
     "direccion": "Pasaje Sado 7965",
     "telefono": "227809603",
-    "categoria": "centro_medico"
+    "categoria": "centrosalud"
 
   },
   {
@@ -12,7 +12,30 @@
     "nombre": "SAPU-Luis Chavarría",
     "direccion": "Pasaje Sado 7965",
     "telefono": "227809603",
-    "categoria": "centro_medico"
+    "categoria": "centrosalud"
 
+  },
+  {
+    "comuna": "San Bernardo",
+    "nombre": "SAPU-Luis Chavarría",
+    "direccion": "Pasaje Sado 7965",
+    "telefono": "227809603",
+    "categoria": "centrosalud"
+
+  },
+  {
+    "comuna": "San Bernardo",
+    "nombre": "SAPU-Luis Chavarría",
+    "direccion": "Pasaje Sado 7965",
+    "telefono": "227809603",
+    "categoria": "bomberos"
+  },
+  {
+    "comuna": "San Bernardo",
+    "nombre": "SAPU-Luis Chavarría",
+    "direccion": "Pasaje Sado 7965",
+    "telefono": "227809603",
+    "categoria": "carabineros"
   }
+
 ]

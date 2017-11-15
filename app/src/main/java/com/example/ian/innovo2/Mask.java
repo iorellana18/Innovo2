@@ -20,6 +20,7 @@ public class Mask extends Activity{
     }
     public void ingresar(View view){
         Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("comuna","san bernardo");
         startActivity(intent);
     }
 }

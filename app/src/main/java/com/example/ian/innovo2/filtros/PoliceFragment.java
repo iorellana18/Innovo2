@@ -1,28 +1,16 @@
 package com.example.ian.innovo2.filtros;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.ian.innovo2.R;
 import com.example.ian.innovo2.model.Objeto;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,16 +19,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 /**
- * Created by ian on 14-11-17.
+ * Created by ianorellana on 15-11-17.
  */
 
-public class AllFragment extends Fragment {
-
-
+public class PoliceFragment extends Fragment {
     ListView list;
     ListAdapter adapter;
 
@@ -76,7 +60,8 @@ public class AllFragment extends Fragment {
                 JSONObject object = json.getJSONObject(j);
                 //String comunaActual = getAddress(-33.614097,-70.701085).toLowerCase();
                 String comunaJson = object.getString("comuna").toLowerCase();
-                if(comuna.equals(comunaJson)) {
+                String tipoJson = object.getString("categoria");
+                if(comuna.equals(comunaJson) && tipoJson.equals("carabineros")) {
                     Objeto objeto = new Objeto(object.getString("comuna"), object.getString("nombre"),
                             object.getString("direccion"), object.getString("telefono"), object.getString("categoria"));
                     objetos.add(objeto);
@@ -105,5 +90,4 @@ public class AllFragment extends Fragment {
         }
         return json;
     }
-
 }

@@ -52,9 +52,15 @@
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Salud"
+            android:text="Centro salud"
             android:tag="filtro3"
             />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="filtro4"
+            android:text="Carabineros" />
 
     </android.support.design.widget.TabLayout>
 

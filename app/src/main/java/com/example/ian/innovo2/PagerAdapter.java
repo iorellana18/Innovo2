@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.ian.innovo2.filtros.AllFragment;
 import com.example.ian.innovo2.filtros.FiremanFragment;
+import com.example.ian.innovo2.filtros.HealthCenterFragment;
+import com.example.ian.innovo2.filtros.PoliceFragment;
 
 /**
  * Created by ian on 14-11-17.
@@ -23,14 +25,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                AllFragment tab1 = new AllFragment();
-                return tab1;
+                return new AllFragment();
             case 1:
-                FiremanFragment tab2 = new FiremanFragment();
-                return tab2;
+                return new FiremanFragment();
             case 2:
-                AllFragment tab3 = new AllFragment();
-                return tab3;
+                return new HealthCenterFragment();
+            case 3:
+                return new PoliceFragment();
             default:
                 return null;
         }
