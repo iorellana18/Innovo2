@@ -67,7 +67,7 @@ public class ListAdapter extends BaseAdapter {
         logo = itemView.findViewById(R.id.logo);
         phone = itemView.findViewById(R.id.phone);
 
-        titulo.setText(objetos.get(position).getCategoria());
+        titulo.setText(objetos.get(position).getNombre());
         if(objetos.get(position).getCategoria().equals("centrosalud")){
             logo.setImageDrawable(itemView.getResources().getDrawable(R.drawable.nurse));
         }else if(objetos.get(position).getCategoria().equals("bomberos")){

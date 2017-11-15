@@ -1,6 +1,7 @@
 package com.example.ian.innovo2.filtros;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -18,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.ian.innovo2.R;
+import com.example.ian.innovo2.form;
 import com.example.ian.innovo2.model.Objeto;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -54,13 +56,15 @@ public class AllFragment extends Fragment {
         adapter = new com.example.ian.innovo2.adapter.ListAdapter(getContext(), getObjetos(comuna));
         list.setAdapter(adapter);
 
-
+        final List<Objeto> objetos = getObjetos(comuna);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
+                Intent intent = new Intent(getContext(),form.class);
+                intent.putExtra("objeto",objetos.get(position));
+                startActivity(intent);
             }
         });
 
