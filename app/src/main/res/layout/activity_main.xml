@@ -7,13 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.ian.innovo2.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:title="some title"
-        app:titleTextColor="@color/white"/>
+
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeContainer"
@@ -56,7 +50,7 @@
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/bomberos"
+            android:icon="@drawable/bomberos_opt"
             android:tag="filtro2"
             />
 
@@ -64,13 +58,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="filtro3"
-            android:icon="@drawable/cruz2" />
+            android:icon="@drawable/cruz2_opt" />
 
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tag="filtro4"
-            android:icon="@drawable/carabineros2" />
+            android:icon="@drawable/carabineros2_opt" />
 
     </android.support.design.widget.TabLayout>
 

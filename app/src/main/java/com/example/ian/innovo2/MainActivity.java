@@ -33,54 +33,16 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
+public class MainActivity extends AppCompatActivity {
 
 
-    FusedLocationProviderClient fusedLocationProviderClient;
-    GoogleApiClient googleApiClient = null;
-    private double latitude;
-    private double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         getSupportActionBar().setTitle("Todos los servicios");
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-
-        googleApiClient.connect();
-
-        Bundle data = new Bundle();//create bundle instance
-        data.putString("key_value", "String to pass");//put string to pass with a key value
-        AllFragment allFragment = new AllFragment();
-        allFragment.setArguments(data);//Set bundle data to fragment
-
-        if (ContextCompat.checkSelfPermission( this,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION ) !=
-                PackageManager.PERMISSION_GRANTED ) {
-
-            fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
-            fusedLocationProviderClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            latitude = location.getLatitude();
-                            longitude = location.getLongitude();
-                            Toast.makeText(getApplicationContext(),getAddress(latitude,longitude),Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-
-        }
-
 
         TabLayout tabLayout = findViewById(R.id.filtro);
 
@@ -126,53 +88,5 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-    @Override
-    public void onConnected(@Nullable Bundle bundle) {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            Log.d("LOCATION", "No hay permisos de localización suficientes");
-            return;
-        }
-        Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
-        //latitude = lastLocation.getLatitude();
-        //longitude = lastLocation.getLongitude();
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
-    private String getAddress(double latitude, double longitude) {
-        StringBuilder result = new StringBuilder();
-        try {
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-            if (addresses.size() > 0) {
-                Address address = addresses.get(0);
-                result.append(address.getLocality());
-                return result.toString();
-            }
-        } catch (IOException e) {
-            Log.e("tag", e.getMessage());
-        }
-        return result.toString();
-    }
-
-
-    public String getComuna(){
-        return getIntent().getStringExtra("comuna");
-    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.ian.innovo2.filtros;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.ian.innovo2.R;
+import com.example.ian.innovo2.form;
 import com.example.ian.innovo2.model.Objeto;
 
 import org.json.JSONArray;
@@ -19,6 +21,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ian on 14-11-17.
@@ -38,13 +41,15 @@ public class FiremanFragment extends Fragment {
         adapter = new com.example.ian.innovo2.adapter.ListAdapter(getContext(), getObjetos(comuna));
         list.setAdapter(adapter);
 
-
+        final List<Objeto> objetos = getObjetos(comuna);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
+                Intent intent = new Intent(getContext(),form.class);
+                intent.putExtra("objeto",objetos.get(position));
+                startActivity(intent);
             }
         });
 

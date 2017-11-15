@@ -71,11 +71,11 @@ public class ListAdapter extends BaseAdapter {
 
         titulo.setText(objetos.get(position).getNombre());
         if(objetos.get(position).getCategoria().equals("centrosalud")){
-            logo.setImageDrawable(itemView.getResources().getDrawable(R.drawable.nurse));
+            logo.setImageDrawable(itemView.getResources().getDrawable(R.drawable.nurse_mini));
         }else if(objetos.get(position).getCategoria().equals("bomberos")){
-            logo.setImageDrawable(itemView.getResources().getDrawable(R.drawable.bombero));
+            logo.setImageDrawable(itemView.getResources().getDrawable(R.drawable.bomberos_mini));
         }else{
-            logo.setImageDrawable(itemView.getResources().getDrawable(R.drawable.police));
+            logo.setImageDrawable(itemView.getResources().getDrawable(R.drawable.police_mini));
         }
 
         phone.setOnClickListener(new View.OnClickListener() {
