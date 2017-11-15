@@ -41,6 +41,14 @@ public class form extends AppCompatActivity {
         telefono.setText(objeto.getTelefono());
         direccion.setText(objeto.getDireccion());
 
+        if(objeto.getCategoria().equals("centrosalud")) {
+            getSupportActionBar().setTitle("Centro de salud");
+        }else if(objeto.getCategoria().equals("bomberos")){
+            getSupportActionBar().setTitle("Bomberos");
+        }else{
+            getSupportActionBar().setTitle("Carabineros");
+        }
+
     }
 
 

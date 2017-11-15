@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.ian.innovo2.MainActivity;
 import com.example.ian.innovo2.R;
+import com.example.ian.innovo2.form;
 import com.example.ian.innovo2.model.Objeto;
 
 import java.util.ArrayList;

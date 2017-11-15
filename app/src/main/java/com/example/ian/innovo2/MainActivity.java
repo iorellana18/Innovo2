@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        getSupportActionBar().setTitle("Todos los servicios");
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -80,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements
         }
 
 
-
         TabLayout tabLayout = findViewById(R.id.filtro);
 
         final ViewPager viewPager = findViewById(R.id.pager);
@@ -92,6 +93,24 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                switch (tab.getPosition()){
+                    case 0:
+                        getSupportActionBar().setTitle("Todos los servicios");
+                        break;
+                    case 1:
+                        getSupportActionBar().setTitle("Bomberos");
+                        break;
+                    case 2:
+                        getSupportActionBar().setTitle("Centros de salud");
+                        break;
+                    case 3:
+                        getSupportActionBar().setTitle("Carabineros");
+                        break;
+                    default:
+                        getSupportActionBar().setTitle("");
+                        break;
+
+                }
             }
 
             @Override
